@@ -6,9 +6,8 @@ from tqdm import tqdm
 def data(X, y, path):
     for i, img in enumerate(tqdm(X)):
         im = Image.fromarray(img)
-        im.save(f"{path}/{y[i]}/{i}.jpg")
-
-folder = '/bcmnist8'
+        im.save(os.path.join(path, str(y[i]), str(i)+'.jpg'))
+folder = 'bcmnist8'
 X_train = np.load(open(os.path.join(folder, "X_train.npy"), "rb"))
 y_train = np.load(open(os.path.join(folder, "y_train.npy"), "rb"))
 env_train = np.load(open(os.path.join(folder, "env_train.npy"), "rb"))
@@ -31,6 +30,6 @@ for i in range(10):
 for i in range(10):
     os.mkdir(os.path.join(folder, 'test', str(i)))
 
-data(X_train, y_train, 'train')
-data(X_val, y_val, 'val')
-data(X_val, y_val, 'test')
+data(X_train, y_train, os.path.join(folder, 'train'))
+data(X_val, y_val, os.path.join(folder, 'val'))
+data(X_val, y_val, os.path.join(folder, 'test'))
