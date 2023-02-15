@@ -32,4 +32,4 @@ for i in range(10):
 
 data(X_train, y_train, os.path.join(folder, 'train'))
 data(X_val, y_val, os.path.join(folder, 'val'))
-data(X_val, y_val, os.path.join(folder, 'test'))
+data(X_test, y_test, os.path.join(folder, 'test'))
